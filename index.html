@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARUQ — Professional Video Editor & Multimedia Designer | Official Portfolio</title>
+    
+    <!-- Google Fonts: Syne, Plus Jakarta Sans, Caveat, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Syne:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="noise-active hyper-animated-theme">
+    <!-- Realtime Scroll Depth Laser Progress Bar -->
+    <div class="scroll-laser-track" id="scroll-laser-track">
+        <div class="scroll-laser-fill" id="scroll-laser-fill">
+            <span class="scroll-laser-spark"></span>
+        </div>
+    </div>
+
+    <!-- Cinematic Scanline & Film Grain Overlays -->
+    <div class="film-grain" aria-hidden="true"></div>
+    <div class="cyber-scanline" aria-hidden="true"></div>
+    <div class="vignette-overlay" aria-hidden="true"></div>
+
+    <!-- Liquid Magnetic Custom Cursor with Trailing Echoes -->
+    <div class="custom-cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+    <div class="cursor-glow-follower" id="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Live Floating System HUD Telemetry (Upper Corners) -->
+    <div class="telemetry-bar left-telemetry mono-text" aria-hidden="true">
+        <span class="telemetry-pulse">●</span>
+        <span>SYS: ONLINE</span>
+        <span class="telemetry-sep">|</span>
+        <span id="live-fps">60.0 FPS</span>
+        <span class="telemetry-sep">|</span>
+        <span id="live-scroll">SCROLL: 0%</span>
+    </div>
+
+    <div class="telemetry-bar right-telemetry mono-text" aria-hidden="true">
+        <span>LOC: JAKARTA TIMUR [106.89°E]</span>
+        <span class="telemetry-sep">|</span>
+        <span id="live-clock">00:00:00 WIB</span>
+    </div>
+
+    <!-- Intro Splash Screen (Apple Keynote Holographic Monolith) -->
+    <div class="splash-screen" id="splash-screen">
+        <div class="splash-prism">
+            <div class="prism-glow"></div>
+            <div class="hud-orbit-ring hud-orbit-1"></div>
+            <div class="hud-orbit-ring hud-orbit-2"></div>
+            <div class="hud-orbit-ring hud-orbit-3"></div>
+            <span class="splash-symbol">✦</span>
+            <div class="splash-name-reveal kinetic-gradient-text">FARUQ<span class="dot-accent">.</span></div>
+            <p class="splash-sub mono-text" data-scramble="PROFESSIONAL VIDEO EDITOR • GRAPHIC DESIGN & INTERFACE">PROFESSIONAL VIDEO EDITOR • GRAPHIC DESIGN & INTERFACE</p>
+        </div>
+        <div class="splash-progress-track">
+            <div class="splash-progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Deep Ambient Living Mesh with Floating Holographic Glyphs -->
+    <div class="ambient-mesh" aria-hidden="true">
+        <div class="ambient-orb orb-primary" id="ambient-orb-1"></div>
+        <div class="ambient-orb orb-secondary" id="ambient-orb-2"></div>
+        <div class="ambient-orb orb-cyan" id="ambient-orb-3"></div>
+        <div class="ambient-orb orb-glow-extra" id="ambient-orb-4"></div>
+        <div class="caustic-sweep"></div>
+        <div class="grid-radar"></div>
+        <div class="light-beam beam-left"></div>
+        <div class="light-beam beam-right"></div>
+        <div class="laser-vertical-scanner"></div>
+
+        <!-- Floating Holographic Sacred Geometry / Cyber Glyphs -->
+        <div class="holo-glyph glyph-1">✦</div>
+        <div class="holo-glyph glyph-2">◈</div>
+        <div class="holo-glyph glyph-3">⬡</div>
+        <div class="holo-glyph glyph-4">★</div>
+        <div class="holo-glyph glyph-5">❖</div>
+        <div class="holo-glyph glyph-6">▲</div>
+    </div>
+
+    <!-- High-Density WebGL-Style Interactive Particle Constellation Canvas -->
+    <canvas id="stage-canvas" aria-hidden="true"></canvas>
+
+    <!-- Header / Island Glass Navbar with Animated Border Beam -->
+    <header class="nav-island-wrapper">
+        <nav class="nav-island liquid-glass border-beam-active container">
+            <div class="border-beam"></div>
+            <a href="#home" class="nav-brand">
+                <span class="brand-sparkle animated-sparkle">✦</span>
+                <span class="brand-text kinetic-gradient-text" id="nav-name">FARUQ</span><span class="dot-accent">.</span>
+            </a>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#video-showcase" class="nav-link"><span class="nav-indicator">●</span> Video Reel</a></li>
+                <li><a href="#karya" class="nav-link"><span>01</span> Karya</a></li>
+                <li><a href="#sertifikasi" class="nav-link"><span>02</span> Sertifikasi</a></li>
+                <li><a href="#breakdown" class="nav-link"><span>03</span> Workflow</a></li>
+                <li><a href="#tentang" class="nav-link"><span>04</span> Keahlian</a></li>
+                <li><a href="#pengalaman" class="nav-link"><span>05</span> Karir</a></li>
+            </ul>
+
+            <div class="nav-cta-wrap">
+                <button class="theme-toggle-btn liquid-glass-pill" id="theme-toggle-btn" title="Ganti Aksen Tema: Liquid Blue / Crimson Red" aria-label="Toggle Tema">
+                    <span id="theme-icon">🌊</span>
+                    <span id="theme-text" class="mono-text">BLUE</span>
+                </button>
+                <button class="audio-toggle-btn liquid-glass-pill" id="audio-toggle-btn" title="Toggle Sound Feedback" aria-label="Toggle Suara">
+                    <span class="audio-bars">
+                        <i></i><i></i><i></i><i></i><i></i>
+                    </span>
+                    <span class="audio-status mono-text">SFX: ON</span>
+                </button>
+                <a href="#kontak" class="btn-liquid-shine btn-sm glow-pulse-btn">
+                    <span>Hubungi Saya</span>
+                    <span class="arrow-sparkle">↗</span>
+                </a>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ==============================================================
+             HERO SECTION — ULTRA ANIMATED CYBER LIQUID GLASS
+             ============================================================== -->
+        <section id="home" class="hero-stage container">
+            <!-- Giant Kinetic Flowing Typography Watermark -->
+            <div class="hero-watermark" aria-hidden="true">
+                <span class="kinetic-text animated-watermark" id="hero-watermark-text">PORTFOLIO</span>
+            </div>
+
+            <div class="hero-content-grid">
+                <!-- Left Aesthetic Typography & Floating Pills -->
+                <div class="hero-meta reveal-up">
+                    <div class="status-capsule liquid-glass-pill animated-border-glow">
+                        <span class="glowing-node"></span>
+                        <span class="status-txt" id="hero-status">TERSEDIA UNTUK KARYA & KOLABORASI BARU</span>
+                    </div>
+
+                    <p class="curated-greeting" id="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-headline kinetic-gradient-text text-scramble-hover" id="hero-name" data-scramble="FARUQ">
+                        FARUQ<span class="dot-accent animated-glitch">.</span>
+                    </h1>
+                    
+                    <div class="hero-role-wrapper">
+                        <span class="role-badge liquid-glass-pill mono-text floating-badge-slow">
+                            <span class="badge-icon-spin">⚙</span> PROFESSIONAL VIDEO EDITOR (5+ TAHUN PENGALAMAN)
+                        </span>
+                        <h2 class="hero-subline text-glow-pulse" id="hero-role">PROFESSIONAL VIDEO EDITOR &<br>MULTIMEDIA DESIGNER</h2>
+                    </div>
+
+                    <p class="hero-narrative" id="hero-bio">
+                        Faruq — Professional Video Editor (5+ Tahun Pengalaman) dengan spesialisasi Commercial Ads, High-Retention Reels/TikTok, Visual Storytelling, Color Grading, serta keahlian Graphic Design (Grade A) dan Interface Technician.
+                    </p>
+
+                    <!-- Interactive Live Audio Frequency Visualizer Ribbon -->
+                    <div class="sound-wave-ribbon liquid-glass-pill" aria-hidden="true">
+                        <span class="mono-text wave-label">FREQ SPECTRUM:</span>
+                        <div class="wave-visualizer">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <span class="mono-text wave-db">-12.4 dB</span>
+                    </div>
+
+                    <div class="hero-action-cluster">
+                        <a href="#video-showcase" class="btn-liquid-shine btn-lg pulse-hover-trigger">
+                            <span class="btn-play-bullet">▶</span>
+                            <span>TONTON VIDEO REEL</span>
+                            <span class="icon-pulse">✦</span>
+                        </a>
+                        <a href="#karya" class="btn-glass-ghost btn-lg magnetic-ghost">
+                            <span>LIHAT SEMUA KARYA</span>
+                            <span class="mono-text">↓</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Center: Faruq's Portrait with Rotating HUD Aura & Sci-Fi Radar -->
+                <div class="hero-visual-center reveal-up">
+                    <div class="optical-glass-pedestal tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="prismatic-rim animated-prism-border"></div>
+                        <div class="specular-caustic"></div>
+                        
+                        <!-- Multi-Layered Rotating HUD Ring Sensors -->
+                        <div class="hud-circle-scanner hud-scanner-outer"></div>
+                        <div class="hud-circle-scanner hud-scanner-inner"></div>
+                        <div class="hud-tick-marks"></div>
+                        <div class="hud-coordinate-pill mono-text">[4K RAW • RECT_23]</div>
+                        
+                        <!-- Faruq's Authentic Studio Photo with Viewfinder HUD -->
+                        <div class="portrait-clip">
+                            <img 
+                                id="hero-portrait-img" 
+                                src="assets/faruq-portrait.jpg" 
+                                alt="Foto Studio Profil Faruq" 
+                                class="portrait-subject"
+                            >
+                            <div class="viewfinder-hud" aria-hidden="true">
+                                <div class="vf-corner vf-tl">┌</div>
+                                <div class="vf-corner vf-tr">┐</div>
+                                <div class="vf-corner vf-bl">└</div>
+                                <div class="vf-corner vf-br">┘</div>
+                                <div class="vf-rec-badge mono-text">
+                                    <span class="vf-rec-dot">●</span> REC <span id="vf-timecode">00:04:18:12</span>
+                                </div>
+                                <div class="vf-res-badge mono-text">4K RAW 60FPS</div>
+                                <div class="vf-crosshair">┼</div>
+                                <div class="vf-telemetry mono-text">SHUTTER 1/120 • F/1.4 • ISO 400 • WB 5600K</div>
+                            </div>
+                            <div class="chromatic-shadow"></div>
+                            <div class="portrait-shimmer-sweep"></div>
+                            <div class="hologram-scanline-beam"></div>
+                        </div>
+
+                        <!-- Animated Micro Glass Sensors with Floating Motion -->
+                        <div class="sensor-pill sensor-top-left liquid-glass-pill floating-element-1">
+                            <span class="record-pulse">●</span>
+                            <span class="mono-text">JAKARTA • 23 JAN 2004</span>
+                        </div>
+
+                        <div class="sensor-pill sensor-bottom-right liquid-glass-pill floating-element-2">
+                            <span class="verified-icon">✦</span>
+                            <span class="mono-text">CERTIFIED GRAPHIC PRO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Faruq's Live Animated Metrics -->
+                <div class="hero-metrics reveal-up">
+                    <div class="metric-glass-card liquid-glass tilt-element card-glow-interactive border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="metric-glow"></div>
+                        <span class="metric-digit"><span class="counter" data-target="08">08</span><span class="metric-suffix">+</span></span>
+                        <span class="metric-label mono-text">KATEGORI KARYA VIDEO</span>
+                        <p class="metric-caption">B-Roll, Cinematic, Video Promosi, Travel Umroh, Wedding, Hair Transplant, & Sender.</p>
+                        <div class="metric-bar-fill"><div class="fill-line" style="width: 88%;"></div></div>
+                    </div>
+
+                    <div class="metric-glass-card liquid-glass tilt-element card-glow-interactive border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="metric-glow"></div>
+                        <span class="metric-digit"><span class="counter" data-target="09">09</span><span class="metric-suffix">+</span></span>
+                        <span class="metric-label mono-text">RIWAYAT PERAN & INDUSTRI</span>
+                        <p class="metric-caption">Desain grafis, teknisi interface iPhone, mural artist, logistik, hingga admin kantor.</p>
+                        <div class="metric-bar-fill"><div class="fill-line" style="width: 95%;"></div></div>
+                    </div>
+
+                    <div class="metric-glass-card liquid-glass tilt-element card-glow-interactive border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="metric-glow"></div>
+                        <span class="metric-digit"><span class="counter" data-target="02">02</span><span class="metric-suffix">📜</span></span>
+                        <span class="metric-label mono-text">SERTIFIKASI KOMPETENSI</span>
+                        <p class="metric-caption">Sertifikasi Desain Grafis (Kagi) & Sertifikat Microsoft Office Grade A.</p>
+                        <div class="metric-bar-fill"><div class="fill-line" style="width: 100%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kinetic Marquee Rail with Velocity Surge on Hover -->
+            <div class="marquee-glass-rail liquid-glass">
+                <div class="marquee-track">
+                    <span>✦ PROFESSIONAL VIDEO EDITOR</span>
+                    <span>★ COMMERCIAL ADS & PROMO</span>
+                    <span>✦ HIGH-RETENTION REELS & TIKTOK</span>
+                    <span>★ COLOR GRADING & 4K RAW</span>
+                    <span>✦ VISUAL STORYTELLING</span>
+                    <span>★ CAPCUT PRO & ADOBE PREMIERE</span>
+                    <span>✦ GRAPHIC DESIGN GRADE A</span>
+                    <span>★ INTERFACE TECHNICIAN</span>
+                    <span>✦ PROFESSIONAL VIDEO EDITOR</span>
+                    <span>★ COMMERCIAL ADS & PROMO</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             VIDEO PORTFOLIO SHOWCASE (DIRECT FROM GOOGLE DRIVE)
+             ============================================================== -->
+        <section id="video-showcase" class="section-aesthetic container">
+            <div class="section-title-lockup reveal-up">
+                <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                    <span class="record-pulse">●</span> VIDEO PRODUCTION SUITE // GOOGLE DRIVE ARCHIVE
+                </div>
+                <h2 class="aesthetic-display scroll-text-animate" data-scramble="VIDEO SHOWCASE & MOTION REEL">
+                    VIDEO SHOWCASE & <span class="gradient-text-liquid">MOTION REEL.</span>
+                </h2>
+                <p class="section-tagline scroll-text-animate">
+                    Koleksi karya video promosi, sinematik B-roll, liputan travel umroh, wedding, hingga reels komersial yang telah diedit secara presisi. Tonton langsung dari pemutar interaktif di bawah ini!
+                </p>
+            </div>
+
+            <!-- Video Category Filter -->
+            <div class="filter-glass-dock reveal-up">
+                <div class="filter-capsules liquid-glass-pill" id="video-filter-tabs">
+                    <button class="filter-capsule active" data-vfilter="all">Semua Karya Video (6)</button>
+                    <button class="filter-capsule" data-vfilter="promosi">Iklan & Commercial</button>
+                    <button class="filter-capsule" data-vfilter="broll">B-Roll & Visual</button>
+                    <button class="filter-capsule" data-vfilter="event">Wedding & Event</button>
+                    <a href="https://drive.google.com/drive/folders/1u_lbknl4kKDdQOBfLeysQvwo1Ztqc9Hi?usp=drive_link" target="_blank" rel="noopener" class="filter-capsule drive-folder-link" title="Buka Folder Google Drive Lengkap">
+                        <span>📂 Folder Utama Drive</span>
+                        <span class="mono-text">↗</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Animated Video Theater Showcase Grid (Semua 6 Video Ditampilkan Langsung) -->
+            <div class="video-theater-grid" id="video-theater-grid">
+                <!-- Video 1: Design Aesthetic Clinic — WNA Inggris Hair Transplant -->
+                <div class="video-card liquid-glass tilt-element reveal-up border-beam-active scroll-text-animate" data-vcat="promosi"
+                    data-title="DESIGN AESTHETIC CLINIC — WNA INGGRIS HAIR TRANSPLANT"
+                    data-category="Commercial Ads • Clinic Branding"
+                    data-drive-id="1BIW8VNDXywGCmYS0ujXV5446yYvW-g8G"
+                    data-filename="Hair Transplant.mp4"
+                    data-format="9:16 • 01:08"
+                    data-subfolder="https://drive.google.com/drive/folders/1KXZZUvUEQheicBqnS-jzSEwvi4JBNh7J"
+                    data-desc="Video komersial & edukasi prosedur estetika medis transplantasi rambut pasien WNA Inggris dengan pacing dinamis, teks bilingual, visual proof meyakinkan, serta color grading bersih terpercaya.">
+                    <div class="border-beam"></div>
+                    <div class="video-player-embed-box">
+                        <iframe src="https://drive.google.com/file/d/1BIW8VNDXywGCmYS0ujXV5446yYvW-g8G/preview" allow="autoplay; fullscreen" loading="lazy" title="Design Aesthetic Clinic Hair Transplant"></iframe>
+                        <div class="video-badge-strip">
+                            <span class="liquid-glass-pill mono-text"><span class="badge-dot">●</span> 9:16 • 01:08</span>
+                            <span class="liquid-glass-pill mono-text">01 // DRIVE</span>
+                        </div>
+                    </div>
+                    <div class="video-info-box">
+                        <div class="info-head">
+                            <h3 class="scroll-text-animate">DESIGN AESTHETIC CLINIC</h3>
+                            <span class="info-arrow">↗</span>
+                        </div>
+                        <div class="local-source-tag mono-text">
+                            <span>📁</span> Sumber: Downloads\Porto\Hair Transplant.mp4
+                        </div>
+                        <p>WNA Inggris Hair Transplant — Edukasi & komersial klinis dengan hook retensi tinggi dan visual proof.</p>
+                        <div class="video-meta-tags mono-text">
+                            <span>CapCut Pro</span> • <span>Commercial Ads</span> • <span>Color Grading</span>
+                        </div>
+                        <div class="video-card-actions">
+                            <button type="button" class="card-external-link primary-action open-bioskop-trigger">
+                                <span>▶ Mode Bioskop</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1KXZZUvUEQheicBqnS-jzSEwvi4JBNh7J" target="_blank" rel="noopener" class="card-external-link">
+                                <span>📂 Folder Hair Transplant</span> ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2: Certified Sleep Science Coach — Sleep Restriction Training -->
+                <div class="video-card liquid-glass tilt-element reveal-up border-beam-active scroll-text-animate stagger-delay-1" data-vcat="broll"
+                    data-title="CERTIFIED SLEEP SCIENCE COACH — SLEEP RESTRICTION TRAINING"
+                    data-category="B-Roll & Visual Storytelling • Edukasi"
+                    data-drive-id="1qfwi5hQ-7RWCoRlgEQjysOP27TJhNko3"
+                    data-filename="Talking head.mp4"
+                    data-format="9:16 • 00:46"
+                    data-subfolder="https://drive.google.com/drive/folders/1Vh_mMUcMQuVqGiVHIcjWt1UFlu2BlvJ1"
+                    data-desc="Konten edukasi kesehatan berbasis sains tidur (Sleep Restriction Training) dengan motion graphic subtitle, visual B-roll mikro, pacing ritmis, dan visual storytelling yang memikat audiens.">
+                    <div class="border-beam"></div>
+                    <div class="video-player-embed-box">
+                        <iframe src="https://drive.google.com/file/d/1qfwi5hQ-7RWCoRlgEQjysOP27TJhNko3/preview" allow="autoplay; fullscreen" loading="lazy" title="Certified Sleep Science Coach"></iframe>
+                        <div class="video-badge-strip">
+                            <span class="liquid-glass-pill mono-text"><span class="badge-dot">●</span> 9:16 • 00:46</span>
+                            <span class="liquid-glass-pill mono-text">02 // DRIVE</span>
+                        </div>
+                    </div>
+                    <div class="video-info-box">
+                        <div class="info-head">
+                            <h3 class="scroll-text-animate">CERTIFIED SLEEP SCIENCE COACH</h3>
+                            <span class="info-arrow">↗</span>
+                        </div>
+                        <div class="local-source-tag mono-text">
+                            <span>📁</span> Sumber: Downloads\Porto\Talking head.mp4
+                        </div>
+                        <p>Sleep Restriction Training — Pacing narasi cepat, tipografi kinetik, dan transisi visual B-roll mikro.</p>
+                        <div class="video-meta-tags mono-text">
+                            <span>Visual Storytelling</span> • <span>Motion Subtitle</span> • <span>B-Roll</span>
+                        </div>
+                        <div class="video-card-actions">
+                            <button type="button" class="card-external-link primary-action open-bioskop-trigger">
+                                <span>▶ Mode Bioskop</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1Vh_mMUcMQuVqGiVHIcjWt1UFlu2BlvJ1" target="_blank" rel="noopener" class="card-external-link">
+                                <span>📂 Folder 1. BROLL</span> ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3: Elfathan Tour — Promo Umroh Akhir Tahun + Thaif -->
+                <div class="video-card liquid-glass tilt-element reveal-up border-beam-active scroll-text-animate stagger-delay-2" data-vcat="promosi"
+                    data-title="ELFATHAN TOUR — PROMO UMROH AKHIR TAHUN + THAIF"
+                    data-category="Travel Umroh • Commercial Promo"
+                    data-drive-id="1YkVXhMIaw9k2TMW3_32lvhuakSmGLNMA"
+                    data-filename="Travel.mp4"
+                    data-format="9:16 • 00:32"
+                    data-subfolder="https://drive.google.com/drive/folders/1StXdnTJ9NQtjwoiIsDygsy6oz1dyv0hm"
+                    data-desc="Video promosi paket ibadah umroh akhir tahun + wisata religi kota Thaif dengan copywriting persuasif, transisi cepat, audio sync ritmis, dan visual sinematik tanah suci.">
+                    <div class="border-beam"></div>
+                    <div class="video-player-embed-box">
+                        <iframe src="https://drive.google.com/file/d/1YkVXhMIaw9k2TMW3_32lvhuakSmGLNMA/preview" allow="autoplay; fullscreen" loading="lazy" title="Elfathan Tour Promo Umroh"></iframe>
+                        <div class="video-badge-strip">
+                            <span class="liquid-glass-pill mono-text"><span class="badge-dot">●</span> 9:16 • 00:32</span>
+                            <span class="liquid-glass-pill mono-text">03 // DRIVE</span>
+                        </div>
+                    </div>
+                    <div class="video-info-box">
+                        <div class="info-head">
+                            <h3 class="scroll-text-animate">ELFATHAN TOUR — UMROH + THAIF</h3>
+                            <span class="info-arrow">↗</span>
+                        </div>
+                        <div class="local-source-tag mono-text">
+                            <span>📁</span> Sumber: Downloads\Porto\Travel.mp4
+                        </div>
+                        <p>Promo Umroh Akhir Tahun + Thaif — Promo paket ibadah dengan motion banner dan alur konversi tinggi.</p>
+                        <div class="video-meta-tags mono-text">
+                            <span>Travel Umroh</span> • <span>Commercial Promo</span> • <span>Motion Graphic</span>
+                        </div>
+                        <div class="video-card-actions">
+                            <button type="button" class="card-external-link primary-action open-bioskop-trigger">
+                                <span>▶ Mode Bioskop</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1StXdnTJ9NQtjwoiIsDygsy6oz1dyv0hm" target="_blank" rel="noopener" class="card-external-link">
+                                <span>📂 Folder 5. Travel</span> ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4: Elfathan Tour — Legalitas NIB & OSS (B-Roll No Face) -->
+                <div class="video-card liquid-glass tilt-element reveal-up border-beam-active scroll-text-animate" data-vcat="broll"
+                    data-title="ELFATHAN TOUR — LEGALITAS NIB & OSS (B-ROLL NO FACE)"
+                    data-category="B-Roll No Face • Corporate Trust"
+                    data-drive-id="1QwBdZ9z_TsPGjyLfrBpF_NKym-tyfomS"
+                    data-filename="B roll no face.mp4"
+                    data-format="9:16 • 00:25"
+                    data-subfolder="https://drive.google.com/drive/folders/1qY6OHCcqE2py0KkBF2lH-RuBBPBkS3ox"
+                    data-desc="Video legalitas resmi perusahaan berstandar syar'i tanpa menampilkan wajah (No Face), mengedepankan dokumen legalitas NIB & OSS, tipografi tegas, dan foley audio tajam.">
+                    <div class="border-beam"></div>
+                    <div class="video-player-embed-box">
+                        <iframe src="https://drive.google.com/file/d/1QwBdZ9z_TsPGjyLfrBpF_NKym-tyfomS/preview" allow="autoplay; fullscreen" loading="lazy" title="Legalitas NIB OSS No Face"></iframe>
+                        <div class="video-badge-strip">
+                            <span class="liquid-glass-pill mono-text"><span class="badge-dot">●</span> 9:16 • 00:25</span>
+                            <span class="liquid-glass-pill mono-text">04 // DRIVE</span>
+                        </div>
+                    </div>
+                    <div class="video-info-box">
+                        <div class="info-head">
+                            <h3 class="scroll-text-animate">ELFATHAN TOUR — LEGALITAS NIB & OSS</h3>
+                            <span class="info-arrow">↗</span>
+                        </div>
+                        <div class="local-source-tag mono-text">
+                            <span>📁</span> Sumber: Downloads\Porto\B roll no face.mp4
+                        </div>
+                        <p>Format No Face Syar'i — Visualisasi dokumen perizinan NIB & OSS dengan sudut mikro B-roll elegan.</p>
+                        <div class="video-meta-tags mono-text">
+                            <span>B-Roll No Face</span> • <span>Syar'i Standard</span> • <span>Foley Audio</span>
+                        </div>
+                        <div class="video-card-actions">
+                            <button type="button" class="card-external-link primary-action open-bioskop-trigger">
+                                <span>▶ Mode Bioskop</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1qY6OHCcqE2py0KkBF2lH-RuBBPBkS3ox" target="_blank" rel="noopener" class="card-external-link">
+                                <span>📂 Folder 3. BROLL NO FACE</span> ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5: Salsabila & Kodrat — Kepingan Rasa Prewedding -->
+                <div class="video-card liquid-glass tilt-element reveal-up border-beam-active scroll-text-animate stagger-delay-1" data-vcat="event"
+                    data-title="SALSABILA & KODRAT — KEPINGAN RASA PREWEDDING"
+                    data-category="Wedding Cinema • Emotional Teaser"
+                    data-drive-id="1ZMbXCv-C3F7l9cJSg3xBQ3buMy_zU_BG"
+                    data-filename="Wedding.mp4"
+                    data-format="16:9 • 01:01"
+                    data-subfolder="https://drive.google.com/drive/folders/1M2YyKAwFveYy23EMk3Q4HWnOkpGnSbhe"
+                    data-desc="Sinematografi prewedding format horizontal (16:9) dengan pacing emosional mendalam, koreksi warna hangat bernuansa film 35mm, alunan musik romantis, and narasi rasa yang menyentuh.">
+                    <div class="border-beam"></div>
+                    <div class="video-player-embed-box">
+                        <iframe src="https://drive.google.com/file/d/1ZMbXCv-C3F7l9cJSg3xBQ3buMy_zU_BG/preview" allow="autoplay; fullscreen" loading="lazy" title="Salsabila & Kodrat Prewedding"></iframe>
+                        <div class="video-badge-strip">
+                            <span class="liquid-glass-pill mono-text"><span class="badge-dot">●</span> 16:9 • 01:01</span>
+                            <span class="liquid-glass-pill mono-text">05 // DRIVE</span>
+                        </div>
+                    </div>
+                    <div class="video-info-box">
+                        <div class="info-head">
+                            <h3 class="scroll-text-animate">SALSABILA & KODRAT — PREWEDDING</h3>
+                            <span class="info-arrow">↗</span>
+                        </div>
+                        <div class="local-source-tag mono-text">
+                            <span>📁</span> Sumber: Downloads\Porto\Wedding.mp4
+                        </div>
+                        <p>Kepingan Rasa — Teaser sinematik layar lebar horizontal dengan grading film dan ritme romantis.</p>
+                        <div class="video-meta-tags mono-text">
+                            <span>16:9 Landscape</span> • <span>Wedding Cinema</span> • <span>Film Color</span>
+                        </div>
+                        <div class="video-card-actions">
+                            <button type="button" class="card-external-link primary-action open-bioskop-trigger">
+                                <span>▶ Mode Bioskop</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1M2YyKAwFveYy23EMk3Q4HWnOkpGnSbhe" target="_blank" rel="noopener" class="card-external-link">
+                                <span>📂 Folder 6. Wedding</span> ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 6: Hyraa ID — Elegant With Syar'i Fashion Showcase -->
+                <div class="video-card liquid-glass tilt-element reveal-up border-beam-active scroll-text-animate stagger-delay-2" data-vcat="promosi"
+                    data-title="HYRAA ID — ELEGANT WITH SYAR'I FASHION SHOWCASE"
+                    data-category="Fashion Showcase • High-Retention Reels"
+                    data-drive-id="1Qvp5kjO1k5B1kDFNdzxcHOR5NX-vXn6A"
+                    data-filename="Hijab.mp4"
+                    data-format="9:16 • 00:16"
+                    data-subfolder="https://drive.google.com/drive/folders/1rmLXs-bhWC2bYZaMW8XhSjWGtEP5Bma-"
+                    data-desc="Video showcase busana muslimah syar'i modern berdurasi 16 detik yang dirancang khusus untuk viralitas TikTok & Instagram Reels dengan beat sync musik energik dan transisi kain halus.">
+                    <div class="border-beam"></div>
+                    <div class="video-player-embed-box">
+                        <iframe src="https://drive.google.com/file/d/1Qvp5kjO1k5B1kDFNdzxcHOR5NX-vXn6A/preview" allow="autoplay; fullscreen" loading="lazy" title="Hyraa ID Fashion Showcase"></iframe>
+                        <div class="video-badge-strip">
+                            <span class="liquid-glass-pill mono-text"><span class="badge-dot">●</span> 9:16 • 00:16</span>
+                            <span class="liquid-glass-pill mono-text">06 // DRIVE</span>
+                        </div>
+                    </div>
+                    <div class="video-info-box">
+                        <div class="info-head">
+                            <h3 class="scroll-text-animate">HYRAA ID — ELEGANT WITH SYAR'I</h3>
+                            <span class="info-arrow">↗</span>
+                        </div>
+                        <div class="local-source-tag mono-text">
+                            <span>📁</span> Sumber: Downloads\Porto\Hijab.mp4
+                        </div>
+                        <p>Fashion Showcase — Durasi mikro 16 detik berdaya pikat tinggi dengan beat cut dan transisi mulus.</p>
+                        <div class="video-meta-tags mono-text">
+                            <span>High-Retention Reels</span> • <span>TikTok & Reels</span> • <span>Fashion</span>
+                        </div>
+                        <div class="video-card-actions">
+                            <button type="button" class="card-external-link primary-action open-bioskop-trigger">
+                                <span>▶ Mode Bioskop</span>
+                            </button>
+                            <a href="https://drive.google.com/drive/folders/1rmLXs-bhWC2bYZaMW8XhSjWGtEP5Bma-" target="_blank" rel="noopener" class="card-external-link">
+                                <span>📂 Folder 8. Hijab</span> ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ekosistem Folder Google Drive (8 Subfolder Kategori) -->
+            <div class="subfolders-hub-wrap liquid-glass reveal-up border-beam-active">
+                <div class="border-beam"></div>
+                <div class="subfolders-hub-header">
+                    <div class="subfolders-hub-title">
+                        <div class="eyebrow-pill liquid-glass-pill mono-text">
+                            <span>ARCHIVE HUB</span> // GOOGLE DRIVE DIRECTORY
+                        </div>
+                        <h3>8 FOLDER KATEGORI GOOGLE DRIVE PORTO</h3>
+                        <p>Akses arsip lengkap aset video, b-roll, footage mentah, dan hasil ekspor dari cloud storage Google Drive resmi.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1u_lbknl4kKDdQOBfLeysQvwo1Ztqc9Hi?usp=drive_link" target="_blank" rel="noopener" class="btn-liquid-shine btn-sm">
+                        <span>📂 Buka Folder Utama Drive</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+
+                <div class="subfolders-grid">
+                    <!-- Subfolder 1: Hair Transplant -->
+                    <a href="https://drive.google.com/drive/folders/1KXZZUvUEQheicBqnS-jzSEwvi4JBNh7J" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">🏥</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder Hair Transplant</div>
+                        <div class="subfolder-meta">Klinik Aesthetic & Pasien WNA</div>
+                    </a>
+
+                    <!-- Subfolder 2: 1. BROLL -->
+                    <a href="https://drive.google.com/drive/folders/1Vh_mMUcMQuVqGiVHIcjWt1UFlu2BlvJ1" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">🎬</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 1. BROLL</div>
+                        <div class="subfolder-meta">Sleep Restriction & Cinematic B-Roll</div>
+                    </a>
+
+                    <!-- Subfolder 3: 2. Cinematic -->
+                    <a href="https://drive.google.com/drive/folders/1vI8LHUxYHJQSXYeOgd8IYaSBjiJHJ8K4" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">🎞️</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 2. Cinematic</div>
+                        <div class="subfolder-meta">Koleksi Cinematic Reel & Visual Mood</div>
+                    </a>
+
+                    <!-- Subfolder 4: 3. BROLL NO FACE -->
+                    <a href="https://drive.google.com/drive/folders/1qY6OHCcqE2py0KkBF2lH-RuBBPBkS3ox" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">⚖️</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 3. BROLL NO FACE</div>
+                        <div class="subfolder-meta">Legalitas NIB & Konten Syar'i No-Face</div>
+                    </a>
+
+                    <!-- Subfolder 5: 4. Promosi -->
+                    <a href="https://drive.google.com/drive/folders/1KWw19UovXcvqZqnUFodLlgv08nr8CAww" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">📢</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 4. Promosi</div>
+                        <div class="subfolder-meta">Iklan Event, Produk & Brand Campaigns</div>
+                    </a>
+
+                    <!-- Subfolder 6: 5. Travel Umroh -->
+                    <a href="https://drive.google.com/drive/folders/1StXdnTJ9NQtjwoiIsDygsy6oz1dyv0hm" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">🕋</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 5. Travel Umroh</div>
+                        <div class="subfolder-meta">Elfathan Tour Promo Umroh + Thaif</div>
+                    </a>
+
+                    <!-- Subfolder 7: 6. Wedding -->
+                    <a href="https://drive.google.com/drive/folders/1M2YyKAwFveYy23EMk3Q4HWnOkpGnSbhe" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">💍</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 6. Wedding</div>
+                        <div class="subfolder-meta">Salsabila & Kodrat Prewedding Teaser</div>
+                    </a>
+
+                    <!-- Subfolder 8: 8. Hijab -->
+                    <a href="https://drive.google.com/drive/folders/1rmLXs-bhWC2bYZaMW8XhSjWGtEP5Bma-" target="_blank" rel="noopener" class="subfolder-card">
+                        <div class="subfolder-card-top">
+                            <span class="subfolder-icon">🧕</span>
+                            <span class="subfolder-arrow">↗</span>
+                        </div>
+                        <div class="subfolder-name">Folder 8. Hijab</div>
+                        <div class="subfolder-meta">Hyraa ID Elegant Syar'i Fashion</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Banner Instansi / Tempat Berkarya -->
+            <div class="institutions-banner liquid-glass reveal-up border-beam-active scroll-text-animate">
+                <div class="border-beam"></div>
+                <span class="institutions-title mono-text">PERNAH BERKARYA & BERKONTRIBUSI DI:</span>
+                <div class="institutions-list">
+                    <span class="inst-logo-pill"><img src="assets/logos/logo-hifix.jpg" alt="HiFix"> HiFix Repair & Academy</span>
+                    <span class="inst-logo-pill"><img src="assets/logos/logo-ibf.jpg" alt="PT IBF"> PT IBF Pakuwon</span>
+                    <span class="inst-logo-pill"><img src="assets/logos/logo-finz.jpg" alt="Finz Chicken"> Finz Chicken / Broiler</span>
+                    <span class="inst-logo-pill"><img src="assets/logos/logo-meguwo.jpg" alt="Kedai Meguwo"> Kedai Meguwo</span>
+                    <span class="inst-logo-pill"><img src="assets/logos/logo-kagi.jpg" alt="Kagi Education"> Kagi Education</span>
+                    <span class="inst-logo-pill">🎨 Muralis Jogja</span>
+                    <span class="inst-logo-pill">📦 Shopee Warehouse</span>
+                    <span class="inst-logo-pill">🎓 MA Al-Manshuroh</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             01 — KARYA PILIHAN: KARYA YANG BICARA
+             ============================================================== -->
+        <section id="karya" class="section-aesthetic container">
+            <div class="section-title-lockup reveal-up">
+                <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                    <span>01</span> // CREATIVE REPERTOIRE
+                </div>
+                <h2 class="aesthetic-display scroll-text-animate" data-scramble="KARYA YANG BICARA">
+                    KARYA YANG <span class="gradient-text-liquid">BICARA.</span>
+                </h2>
+                <p class="section-tagline scroll-text-animate">
+                    Eksplorasi karya lintas disiplin: dari desain grafis cetak & digital, video promosi dinamis, manajemen antarmuka teknis, hingga seni lukis mural ruang publik.
+                </p>
+            </div>
+
+            <!-- Filter Glass Bar -->
+            <div class="filter-glass-dock reveal-up">
+                <div class="filter-capsules liquid-glass-pill" id="filter-tabs">
+                    <button class="filter-capsule active" data-filter="all">Semua Bidang</button>
+                    <button class="filter-capsule" data-filter="graphic">Desain Grafis</button>
+                    <button class="filter-capsule" data-filter="video">Video Editing</button>
+                    <button class="filter-capsule" data-filter="interface">Teknisi Interface</button>
+                    <button class="filter-capsule" data-filter="mural">Seni Mural</button>
+                    <button class="filter-capsule" data-filter="admin">Administrasi & Office</button>
+                </div>
+            </div>
+
+            <!-- Glass Cards Grid -->
+            <div class="repertoire-grid" id="works-grid">
+                <!-- Project 1: Brand & Commercial Graphic Design -->
+                <article class="aesthetic-card liquid-glass tilt-element reveal-up border-beam-active" data-category="graphic"
+                    data-title="COMMERCIAL BRAND IDENTITY & PROMOTIONAL DESIGN"
+                    data-cat="DESAIN GRAFIS & CETAK"
+                    data-year="2024 — 2026"
+                    data-duration="PROYEK KLIEN"
+                    data-desc="Merancang materi promosi visual cetak dan digital: poster promosi, brosur komersial, banner media sosial, dan manipulasi foto produk dengan komposisi warna berdaya pikat tinggi."
+                    data-tools="Adobe Photoshop, CorelDRAW, Canva Pro"
+                    data-img="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=85">
+                    <div class="border-beam"></div>
+                    <div class="card-media-shell">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=85" alt="Desain Grafis Komersial">
+                        <div class="glass-play-trigger">
+                            <span class="trigger-icon">🔍</span>
+                        </div>
+                        <div class="media-badges">
+                            <span class="liquid-glass-pill mono-text">01 // DESIGN</span>
+                            <span class="liquid-glass-pill mono-text">VECTOR & RASTER</span>
+                        </div>
+                    </div>
+                    <div class="card-caption">
+                        <div class="caption-head">
+                            <h3>COMMERCIAL BRAND VISUALS</h3>
+                            <span class="caption-arrow">↗</span>
+                        </div>
+                        <p>Desain Promosi • Layouting Cetak • Manipulasi Foto</p>
+                        <div class="card-footer-pill mono-text">CorelDRAW & Photoshop</div>
+                    </div>
+                </article>
+
+                <!-- Project 2: Video Promosi & Social Editing -->
+                <article class="aesthetic-card liquid-glass tilt-element reveal-up border-beam-active" data-category="video"
+                    data-title="DYNAMIC PROMOTIONAL VIDEO & REELS PRODUCTION"
+                    data-cat="VIDEO EDITING & KONTEN"
+                    data-year="2024 — 2026"
+                    data-duration="FREELANCE"
+                    data-desc="Penyuntingan video promosi berkecepatan dinamis (speed ramps), pemotongan ritmis musik, penambahan teks tipografi animasi, dan color grading estetis untuk platform TikTok & Instagram Reels."
+                    data-tools="Adobe Premiere Pro, CapCut Pro"
+                    data-img="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85">
+                    <div class="border-beam"></div>
+                    <div class="card-media-shell">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85" alt="Video Editing Promosi">
+                        <div class="glass-play-trigger">
+                            <span class="trigger-icon">▶</span>
+                        </div>
+                        <div class="media-badges">
+                            <span class="liquid-glass-pill mono-text">02 // VIDEO</span>
+                            <span class="liquid-glass-pill mono-text">SHORT & REELS</span>
+                        </div>
+                    </div>
+                    <div class="card-caption">
+                        <div class="caption-head">
+                            <h3>PROMOTIONAL VIDEO EDITING</h3>
+                            <span class="caption-arrow">↗</span>
+                        </div>
+                        <p>Rhythm Cut • Sound Sync • Color Enhancement</p>
+                        <div class="card-footer-pill mono-text">Premiere Pro & CapCut</div>
+                    </div>
+                </article>
+
+                <!-- Project 3: Interface Technician & Software Troubleshooting -->
+                <article class="aesthetic-card liquid-glass tilt-element reveal-up border-beam-active" data-category="interface"
+                    data-title="SYSTEM INTERFACE REPAIR & CLIENT DATA DIAGNOSIS"
+                    data-cat="TEKNOLOGI & OPERASIONAL"
+                    data-year="2023"
+                    data-duration="HIFIX ACADEMY"
+                    data-desc="Menangani diagnosis kerusakan perangkat lunak berbasis antarmuka (interface base), pemulihan sistem operasi, perbaikan data keluhan konsumen, serta optimasi stabilitas perangkat digital."
+                    data-tools="Interface Base Diagnostic Tools, System Recovery Utilities"
+                    data-img="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85">
+                    <div class="border-beam"></div>
+                    <div class="card-media-shell">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=85" alt="Teknisi Interface">
+                        <div class="glass-play-trigger">
+                            <span class="trigger-icon">⚙️</span>
+                        </div>
+                        <div class="media-badges">
+                            <span class="liquid-glass-pill mono-text">03 // INTERFACE</span>
+                            <span class="liquid-glass-pill mono-text">DIAGNOSTICS</span>
+                        </div>
+                    </div>
+                    <div class="card-caption">
+                        <div class="caption-head">
+                            <h3>INTERFACE SYSTEM REPAIR</h3>
+                            <span class="caption-arrow">↗</span>
+                        </div>
+                        <p>Software Base Troubleshooting • Client Support</p>
+                        <div class="card-footer-pill mono-text">HiFix Repair & Academy</div>
+                    </div>
+                </article>
+
+                <!-- Project 4: Large Scale Mural Art -->
+                <article class="aesthetic-card liquid-glass tilt-element reveal-up border-beam-active" data-category="mural"
+                    data-title="LARGE SCALE COMMERCIAL & PUBLIC SPACE MURAL"
+                    data-cat="SENI MURAL & PAINTING"
+                    data-year="2023 — 2024"
+                    data-duration="MURALIS JOGJA"
+                    data-desc="Merancang konsep sketsa visual tematik dan mengeksekusi lukisan dinding skala besar pada dinding ruang publik, kafe, dan ruang bisnis komersial dengan ketahanan cat dan estetika tinggi."
+                    data-tools="Manual Sketching, Acrylic Painting, Spray & Wall Coating"
+                    data-img="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85">
+                    <div class="border-beam"></div>
+                    <div class="card-media-shell">
+                        <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85" alt="Seni Mural Jogja">
+                        <div class="glass-play-trigger">
+                            <span class="trigger-icon">🎨</span>
+                        </div>
+                        <div class="media-badges">
+                            <span class="liquid-glass-pill mono-text">04 // MURAL</span>
+                            <span class="liquid-glass-pill mono-text">LARGE CANVAS</span>
+                        </div>
+                    </div>
+                    <div class="card-caption">
+                        <div class="caption-head">
+                            <h3>PUBLIC SPACE MURAL ART</h3>
+                            <span class="caption-arrow">↗</span>
+                        </div>
+                        <p>Konsep Visual Ruang • Manual Painting • Estetika Ruang</p>
+                        <div class="card-footer-pill mono-text">Muralis Jogja (1 Tahun)</div>
+                    </div>
+                </article>
+
+                <!-- Project 5: Office Administration & Data Logistics -->
+                <article class="aesthetic-card liquid-glass tilt-element reveal-up border-beam-active" data-category="admin"
+                    data-title="ADMINISTRATION SYSTEM, EXCEL AUTOMATION & INVENTORY"
+                    data-cat="ADMINISTRASI & OPERASIONAL"
+                    data-year="2023 — 2024"
+                    data-duration="PT IBF & LOGISTIK"
+                    data-desc="Pengolahan data harian berpresisi tinggi menggunakan Microsoft Excel (VLOOKUP, IF, PivotTable), pengarsipan dokumen kantor, korespondensi bisnis, dan kontrol stok barang masuk/keluar."
+                    data-tools="Microsoft Excel, Word, PowerPoint (Grade A Certified)"
+                    data-img="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85">
+                    <div class="border-beam"></div>
+                    <div class="card-media-shell">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85" alt="Administrasi & Excel">
+                        <div class="glass-play-trigger">
+                            <span class="trigger-icon">📊</span>
+                        </div>
+                        <div class="media-badges">
+                            <span class="liquid-glass-pill mono-text">05 // ADMIN</span>
+                            <span class="liquid-glass-pill mono-text">DATA CONTROL</span>
+                        </div>
+                    </div>
+                    <div class="card-caption">
+                        <div class="caption-head">
+                            <h3>OFFICE & INVENTORY CONTROL</h3>
+                            <span class="caption-arrow">↗</span>
+                        </div>
+                        <p>Pengolahan Data Excel • Pengarsipan • Stok In/Out</p>
+                        <div class="card-footer-pill mono-text">PT IBF & Shopee Warehouse</div>
+                    </div>
+                </article>
+
+                <!-- Project 6: E-Commerce Store Management & Customer Care -->
+                <article class="aesthetic-card liquid-glass tilt-element reveal-up border-beam-active" data-category="admin"
+                    data-title="DIGITAL STOREFRONT MANAGEMENT & CUSTOMER RETENTION"
+                    data-cat="OPERASIONAL TOKO ONLINE"
+                    data-year="2023"
+                    data-duration="E-COMMERCE"
+                    data-desc="Menjalankan tata kelola toko digital di marketplace: update katalog produk berkala, pengaturan etalase promosi visual, sinkronisasi stok gudang, dan penanganan komunikasi pelanggan responsif."
+                    data-tools="Shopee / Tokopedia Seller Centre, Canva, Excel"
+                    data-img="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=85">
+                    <div class="border-beam"></div>
+                    <div class="card-media-shell">
+                        <img src="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=85" alt="Toko Online">
+                        <div class="glass-play-trigger">
+                            <span class="trigger-icon">🛍️</span>
+                        </div>
+                        <div class="media-badges">
+                            <span class="liquid-glass-pill mono-text">06 // E-COMMERCE</span>
+                            <span class="liquid-glass-pill mono-text">OPERASIONAL</span>
+                        </div>
+                    </div>
+                    <div class="card-caption">
+                        <div class="caption-head">
+                            <h3>DIGITAL STORE MANAGEMENT</h3>
+                            <span class="caption-arrow">↗</span>
+                        </div>
+                        <p>Etalase Visual • Kontrol Stok • Layanan Konsumen</p>
+                        <div class="card-footer-pill mono-text">Admin Online Shop (5 Bulan)</div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Client & Studio Collaborators Strip -->
+            <div class="client-aesthetic-strip reveal-up">
+                <span class="mono-text strip-title">// LINGKUP TEMPAT KERJA & KOLABORASI RESMI</span>
+                <div class="client-grid-glass liquid-glass border-beam-active">
+                    <div class="border-beam"></div>
+                    <div class="studio-logo"><span>KAGI</span><small>Education Certified</small></div>
+                    <div class="studio-logo"><span>HIFIX</span><small>Repair & Academy</small></div>
+                    <div class="studio-logo"><span>PT IBF</span><small>Pakuwon Group</small></div>
+                    <div class="studio-logo"><span>MURALIS</span><small>Jogja Creative</small></div>
+                    <div class="studio-logo"><span>FINZ</span><small>Broiler Logistics</small></div>
+                    <div class="studio-logo"><span>SHOPEE</span><small>Warehouse Hub</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             02 — SERTIFIKASI & LEGALITAS KOMPETENSI
+             ============================================================== -->
+        <section id="sertifikasi" class="section-aesthetic container">
+            <div class="recognition-aesthetic-grid">
+                <!-- Left Sticky Accent Column -->
+                <div class="recognition-hero-col reveal-up">
+                    <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                        <span>02</span> // OFFICIAL CREDENTIALS
+                    </div>
+                    <h2 class="aesthetic-display scroll-text-animate" data-scramble="SERTIFIKASI & KOMPETENSI">
+                        SERTIFIKASI &<br>
+                        <span class="gradient-text-liquid">KOMPETENSI.</span>
+                    </h2>
+
+                    <div class="laurel-stat-block liquid-glass tilt-element card-glow-interactive border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="laurel-vector animated-trophy">📜</div>
+                        <div class="laurel-copy">
+                            <span class="laurel-num">RESMI<span class="gradient-text-liquid">★</span></span>
+                            <strong>TERVERIFIKASI LEMBAGA</strong>
+                            <p>Sertifikat keahlian desain grafis profesional dan kemampuan Microsoft Office terakreditasi.</p>
+                        </div>
+                    </div>
+
+                    <p class="aesthetic-manifesto">
+                        "Kombinasi antara sertifikasi resmi dan pengalaman nyata di lapangan menjadi pondasi utama dalam memberikan hasil kerja yang konsisten dan dapat diandalkan."
+                    </p>
+
+                    <a href="#kontak" class="specular-link mono-text">
+                        <span>HUBUNGI UNTUK KERJASAMA</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+
+                <!-- Right Sculpted Credentials Rows -->
+                <div class="awards-sculpted-list reveal-up">
+                    <div class="award-glass-item liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <img src="assets/logos/logo-kagi.jpg" alt="Kagi Education Logo" class="award-cert-logo">
+                        <div class="award-content">
+                            <h4>Design Graphic Professional Certification</h4>
+                            <p>Kagi Education (No: KG/0001/DGP/VII/2025) — CorelDRAW (85) & Photoshop (84)</p>
+                        </div>
+                        <span class="award-tag liquid-glass-pill mono-text">CERTIFIED</span>
+                        <span class="award-numeral mono-text">2025</span>
+                    </div>
+
+                    <div class="award-glass-item liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="award-glow-dot"></div>
+                        <div class="award-content">
+                            <h4>Sertifikat Microsoft Office — Predikat Nilai A</h4>
+                            <p>Yayasan Khidmatus Sunnah — Ujian Akhir Komputer MS Word (A), Excel (A), PPT (A)</p>
+                        </div>
+                        <span class="award-tag liquid-glass-pill mono-text">GRADE A</span>
+                        <span class="award-numeral mono-text">2024</span>
+                    </div>
+
+                    <div class="award-glass-item liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="award-glow-dot"></div>
+                        <div class="award-content">
+                            <h4>Ijazah Marhalah Aliyah (Setingkat SMA)</h4>
+                            <p>Pondok Tahfizhul Qur'an Al-Manshuroh Mujur, Kroya, Cilacap</p>
+                        </div>
+                        <span class="award-tag liquid-glass-pill mono-text">LULUS</span>
+                        <span class="award-numeral mono-text">2023</span>
+                    </div>
+
+                    <div class="award-glass-item liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="award-glow-dot"></div>
+                        <div class="award-content">
+                            <h4>Ijazah Marhalah Takhossus Lughoh</h4>
+                            <p>Pondok Tahfizhul Qur'an Al-Manshuroh — Penguasaan Bahasa & Literasi</p>
+                        </div>
+                        <span class="award-tag liquid-glass-pill mono-text">LULUS</span>
+                        <span class="award-numeral mono-text">2020</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             03 — WORKFLOW: FROM RAW SKETCH TO FINAL ART
+             ============================================================== -->
+        <section id="breakdown" class="section-aesthetic container">
+            <div class="breakdown-stage-grid">
+                <!-- Left Aesthetic Explainer -->
+                <div class="breakdown-info-col reveal-up">
+                    <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                        <span>03</span> // PRODUCTION WORKFLOW
+                    </div>
+                    <h2 class="aesthetic-display">
+                        DARI SKETSA.<br>
+                        <span class="gradient-text-liquid">MENJADI KARYA.</span>
+                    </h2>
+                    <p class="breakdown-copy">
+                        Lihat alur transformasi karya desain: dari konsep kasar di atas kertas / wireframe vektor mentah, hingga menjadi visual komersial siap cetak beresolusi tinggi dengan warna safir yang hidup.
+                    </p>
+
+                    <div class="pipeline-switchers">
+                        <button class="pipe-btn active" data-pos="15">
+                            <span class="mono-text">01</span>
+                            <span>Raw Vector / Wireframe</span>
+                        </button>
+                        <button class="pipe-btn" data-pos="50">
+                            <span class="mono-text">02</span>
+                            <span>Split 50:50 View</span>
+                        </button>
+                        <button class="pipe-btn" data-pos="88">
+                            <span class="mono-text">03</span>
+                            <span>Final Rendered Art</span>
+                        </button>
+                    </div>
+
+                    <div class="interaction-hint liquid-glass-pill mono-text">
+                        <span class="swipe-arrow">↔</span>
+                        <span>GESER PENANDA DI LAYAR SEBELAH</span>
+                    </div>
+                </div>
+
+                <!-- Right Cinematic Liquid Glass Before/After Comparison Slider -->
+                <div class="breakdown-canvas-col reveal-up">
+                    <div class="liquid-comparison-frame liquid-glass border-beam-active" id="comparison-frame">
+                        <div class="border-beam"></div>
+                        <!-- AFTER Layer (Full Vibrant Design) -->
+                        <div class="frame-layer layer-after">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1400&q=85" alt="Final Rendered Design">
+                            
+                            <!-- Cinema HUD Elements -->
+                            <div class="cinema-hud-decorations" aria-hidden="true">
+                                <span class="hud-tag top-left mono-text">● FINAL COMPOSITE // CMYK 300DPI</span>
+                                <span class="hud-tag bottom-right mono-text">COLOR PROFILES: P3 & SRGB</span>
+                                <div class="reticle-center"></div>
+                            </div>
+
+                            <span class="layer-stamp stamp-after liquid-glass-pill mono-text">
+                                FINAL POLISHED DESIGN
+                            </span>
+                        </div>
+
+                        <!-- BEFORE Layer (Desaturated Wireframe) -->
+                        <div class="frame-layer layer-before" id="comp-before">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1400&q=85" alt="Raw Sketch / Outline">
+
+                            <!-- Visual Tracking & Grid Overlay -->
+                            <div class="log-grid-matrix" aria-hidden="true">
+                                <div class="trk-crosshair" style="top:25%; left:28%">+ GRID_ALIGN_X</div>
+                                <div class="trk-crosshair" style="top:62%; left:48%">+ VECTOR_NODE_B</div>
+                                <div class="trk-crosshair" style="top:38%; left:72%">+ BLEED_MARGIN</div>
+                            </div>
+
+                            <span class="layer-stamp stamp-before liquid-glass-pill mono-text">
+                                RAW WIREFRAME / SKETCH
+                            </span>
+                        </div>
+
+                        <!-- Laser Split Line & Handle -->
+                        <div class="slider-laser-line" id="comp-slider-line">
+                            <div class="laser-handle liquid-glass-pill">
+                                <span class="laser-left">◀</span>
+                                <span class="laser-center">✦</span>
+                                <span class="laser-right">▶</span>
+                            </div>
+                        </div>
+
+                        <!-- Hidden Interactive Range Input -->
+                        <input type="range" min="5" max="95" value="50" class="laser-range-input" id="comp-range" aria-label="Slider Perbandingan Sketsa vs Final">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             04 — KEAHLIAN: SPESIFIKASI & MATRIKS SKILL
+             ============================================================== -->
+        <section id="tentang" class="section-aesthetic container">
+            <div class="section-title-lockup reveal-up">
+                <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                    <span>04</span> // CORE COMPETENCIES
+                </div>
+                <h2 class="aesthetic-display scroll-text-animate" data-scramble="KEAHLIAN & MATRIKS TEKNIS">
+                    KEAHLIAN &<br>
+                    <span class="gradient-text-liquid">MATRIKS TEKNIS.</span>
+                </h2>
+            </div>
+
+            <div class="triptych-grid">
+                <!-- Col 1: Software & Skill Stack -->
+                <div class="triptych-card liquid-glass tilt-element reveal-up border-beam-active">
+                    <div class="border-beam"></div>
+                    <span class="triptych-label mono-text">// KEMAMPUAN TEKNIS</span>
+                    <h3 class="triptych-title">ARSITEKTUR SKILL</h3>
+
+                    <div class="aesthetic-progress-stack">
+                        <div class="prog-item">
+                            <div class="prog-head">
+                                <span>Desain Grafis (Photoshop & CorelDRAW)</span>
+                                <span class="mono-text">95%</span>
+                            </div>
+                            <div class="prog-trough"><div class="prog-bar" data-width="95%"></div></div>
+                        </div>
+
+                        <div class="prog-item">
+                            <div class="prog-head">
+                                <span>Video Editing (Premiere Pro & CapCut)</span>
+                                <span class="mono-text">92%</span>
+                            </div>
+                            <div class="prog-trough"><div class="prog-bar" data-width="92%"></div></div>
+                        </div>
+
+                        <div class="prog-item">
+                            <div class="prog-head">
+                                <span>Administrasi Microsoft Office (Excel/Word/PPT)</span>
+                                <span class="mono-text">94%</span>
+                            </div>
+                            <div class="prog-trough"><div class="prog-bar" data-width="94%"></div></div>
+                        </div>
+
+                        <div class="prog-item">
+                            <div class="prog-head">
+                                <span>Teknisi Interface & Troubleshooting Software</span>
+                                <span class="mono-text">90%</span>
+                            </div>
+                            <div class="prog-trough"><div class="prog-bar" data-width="90%"></div></div>
+                        </div>
+
+                        <div class="prog-item">
+                            <div class="prog-head">
+                                <span>Seni Mural & Lukis Manual</span>
+                                <span class="mono-text">88%</span>
+                            </div>
+                            <div class="prog-trough"><div class="prog-bar" data-width="88%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Software Dock -->
+                    <div class="software-dock-matrix">
+                        <div class="app-chip" title="CapCut Pro"><span>Cc</span></div>
+                        <div class="app-chip" title="Adobe Photoshop"><span>Ps</span></div>
+                        <div class="app-chip" title="CorelDRAW"><span>CD</span></div>
+                        <div class="app-chip" title="Adobe Illustrator"><span>Ai</span></div>
+                        <div class="app-chip" title="Canva Pro"><span>Cv</span></div>
+                        <div class="app-chip" title="Microsoft Word (Grade A)"><span>Wd</span></div>
+                        <div class="app-chip" title="Microsoft Excel (Grade A)"><span>Xl</span></div>
+                        <div class="app-chip" title="Microsoft PowerPoint (Grade A)"><span>Pt</span></div>
+                    </div>
+                </div>
+
+                <!-- Col 2: Interpersonal & Operational Strengths -->
+                <div class="triptych-card liquid-glass tilt-element reveal-up border-beam-active">
+                    <div class="border-beam"></div>
+                    <span class="triptych-label mono-text">// OPERASIONAL & NILAI KERJA</span>
+                    <h3 class="triptych-title">KEUNGGULAN KERJA</h3>
+
+                    <div class="gear-matrix">
+                        <div class="gear-row">
+                            <span class="gear-glyph">⏱️</span>
+                            <div>
+                                <strong>Manajemen Waktu & Tenggat</strong>
+                                <p>Disiplin tinggi terhadap jadwal rilis dan penyelesaian tugas tepat waktu.</p>
+                            </div>
+                        </div>
+
+                        <div class="gear-row">
+                            <span class="gear-glyph">💬</span>
+                            <div>
+                                <strong>Komunikasi & Negosiasi</strong>
+                                <p>Cakap dalam berinteraksi dengan klien, rekan kerja, dan konsumen.</p>
+                            </div>
+                        </div>
+
+                        <div class="gear-row">
+                            <span class="gear-glyph">🧠</span>
+                            <div>
+                                <strong>Berpikir Kritis & Problem Solving</strong>
+                                <p>Mampu mencari jalan keluar efektif saat menghadapi kendala teknis.</p>
+                            </div>
+                        </div>
+
+                        <div class="gear-row">
+                            <span class="gear-glyph">🔄</span>
+                            <div>
+                                <strong>Adaptasi Cepat & Ketahanan Kerja</strong>
+                                <p>Siap bekerja di lingkungan dinamis, sistem baru, maupun tim lintas fungsi.</p>
+                            </div>
+                        </div>
+
+                        <div class="gear-row">
+                            <span class="gear-glyph">📦</span>
+                            <div>
+                                <strong>Manajemen Gudang & Logistik</strong>
+                                <p>Pemahaman alur barang masuk/keluar, QC produk, dan pembukuan stok.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Col 3: Faruq's Professional Summary Card & Education -->
+                <div class="triptych-card quote-monolith liquid-glass tilt-element reveal-up border-beam-active">
+                    <div class="border-beam"></div>
+                    <div class="prism-watermark">✦</div>
+                    <span class="triptych-label mono-text">// RINGKASAN PROFESIONAL & PENDIDIKAN</span>
+                    
+                    <p class="manifesto-text">
+                        “Memadukan kreativitas visual, ketelitian teknis sistem interface, dan manajemen operasional yang rapi untuk menghadirkan solusi kerja yang tuntas.”
+                    </p>
+
+                    <div class="edu-tree">
+                        <div class="edu-item">
+                            <h4>MA Mahad Al-Manshuroh Mujur</h4>
+                            <p>Madrasah Aliyah / Setingkat SMA</p>
+                        </div>
+                        <div class="edu-item">
+                            <h4>SMP Mahad Al-Manshuroh Mujur</h4>
+                            <p>Sekolah Menengah Pertama</p>
+                        </div>
+                        <div class="edu-item">
+                            <h4>SD Mahad Darul Atsar Purwakarta</h4>
+                            <p>Sekolah Dasar</p>
+                        </div>
+                    </div>
+
+                    <div class="quote-signature-box" style="margin-top: 24px;">
+                        <span class="signature-cursive" id="quote-sig">Faruq</span>
+                        <div class="signature-title-meta">
+                            <strong>FARUQ • PROFESSIONAL VIDEO EDITOR & MULTIMEDIA DESIGNER</strong>
+                            <small class="mono-text">JAKARTA, 23 JANUARI 2004 • JAKARTA TIMUR</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================================
+             05 — PENGALAMAN: JEJAK LANGKAH KARIR
+             ============================================================== -->
+        <section id="pengalaman" class="section-aesthetic container">
+            <div class="section-title-lockup reveal-up">
+                <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                    <span>05</span> // CAREER ODYSSEY
+                </div>
+                <h2 class="aesthetic-display scroll-text-animate" data-scramble="TERUS BERGERAK. TERUS BERKARYA.">
+                    TERUS BERGERAK.<br>
+                    <span class="gradient-text-liquid">TERUS BERKARYA.</span>
+                </h2>
+            </div>
+
+            <div class="experience-aesthetic-split">
+                <!-- Timeline Feed with All 9 Authentic Career Experiences -->
+                <div class="aesthetic-timeline reveal-up">
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 5+ TAHUN</div>
+                        <div class="card-timeline-body">
+                            <h3>Professional Video Editor & Multimedia Designer</h3>
+                            <span class="agency-tag">Independen • Creative Production Studio</span>
+                            <p>Spesialisasi Commercial Ads, High-Retention Reels/TikTok, Visual Storytelling, Color Grading, serta keahlian Graphic Design berpredikat Grade A.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 4 BULAN</div>
+                        <div class="card-timeline-body">
+                            <div class="timeline-card-header">
+                                <img src="assets/logos/logo-hifix.jpg" alt="HiFix Logo" class="timeline-company-logo">
+                                <div>
+                                    <h3>Teknisi Interface & Admin di HiFix Repair & Academy</h3>
+                                    <span class="agency-tag">HiFix Repair & Academy</span>
+                                </div>
+                            </div>
+                            <p>Menangani manajemen data keluhan pelanggan, mendiagnosis masalah software antarmuka perangkat, pengarsipan berkas administrasi, dan pendampingan teknisi.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 1 TAHUN</div>
+                        <div class="card-timeline-body">
+                            <h3>Muralis Jogja — Seniman Mural</h3>
+                            <span class="agency-tag">Muralis Jogja</span>
+                            <p>Membuat konsep artistik dan mengeksekusi lukisan mural skala besar untuk memperindah ruang publik maupun tempat bisnis.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 3 TAHUN</div>
+                        <div class="card-timeline-body">
+                            <div class="timeline-card-header">
+                                <img src="assets/logos/logo-finz.jpg" alt="Finz Chicken Logo" class="timeline-company-logo">
+                                <div>
+                                    <h3>Staf Operasional / Pengawas di Finz Chicken / Broiler Sleman</h3>
+                                    <span class="agency-tag">Finz Chicken / Broiler Sleman</span>
+                                </div>
+                            </div>
+                            <p>Mengatur kelancaran logistik distribusi harian, pengawasan alur operasional, dan melakukan kontrol kualitas produk secara menyeluruh.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 2 TAHUN</div>
+                        <div class="card-timeline-body">
+                            <h3>Guru / Tenaga Pendidik di MA Pageralang & Al-Manshuroh</h3>
+                            <span class="agency-tag">MA Pageralang & Al-Manshuroh</span>
+                            <p>Menyusun materi ajar yang kreatif, membimbing kelas, dan mengevaluasi perkembangan akademik siswa secara berkala.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 1 TAHUN</div>
+                        <div class="card-timeline-body">
+                            <div class="timeline-card-header">
+                                <img src="assets/logos/logo-meguwo.jpg" alt="Kedai Meguwo Logo" class="timeline-company-logo">
+                                <div>
+                                    <h3>Barista & Operasional di Kedai Meguwo</h3>
+                                    <span class="agency-tag">Kedai Meguwo</span>
+                                </div>
+                            </div>
+                            <p>Meracik menu minuman sesuai standar kualitas dan mengelola ketersediaan stok bahan baku serta operasional harian kedai.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active scroll-text-animate">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 5 BULAN</div>
+                        <div class="card-timeline-body">
+                            <div class="timeline-card-header">
+                                <img src="assets/logos/logo-ibf.jpg" alt="PT IBF Logo" class="timeline-company-logo">
+                                <div>
+                                    <h3>Admin Kantor di PT IBF Pakuwon</h3>
+                                    <span class="agency-tag">PT IBF Pakuwon</span>
+                                </div>
+                            </div>
+                            <p>Mengelola rekap data harian, pengarsipan dokumen penting, serta operasional administrasi kantor secara terstruktur dan akurat.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 5 BULAN</div>
+                        <div class="card-timeline-body">
+                            <h3>Admin Online Shop — E-Commerce Specialist</h3>
+                            <span class="agency-tag">Toko Digital E-Commerce</span>
+                            <p>Mengelola operasional toko digital di platform e-commerce, memperbarui stok produk, dan melayani komunikasi chat konsumen secara prima.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-glass-card liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="card-timeline-date mono-text">DURASI: 1 BULAN</div>
+                        <div class="card-timeline-body">
+                            <h3>Staf Gudang di Shopee Warehouse</h3>
+                            <span class="agency-tag">Shopee Warehouse</span>
+                            <p>Melakukan penyortiran logistik dan pemeriksaan akurasi data fisik barang masuk maupun keluar (inbound/outbound).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sticky Philosophy Monolith -->
+                <div class="experience-monolith-side reveal-up">
+                    <div class="monolith-glass liquid-glass tilt-element card-glow-interactive border-beam-active">
+                        <div class="border-beam"></div>
+                        <span class="mono-text monolith-eyebrow">// PRINSIP KERJA</span>
+                        <h3 class="monolith-headline">
+                            LITTLE WINS,<br>
+                            <span class="gradient-text-liquid">BIG MEANING.</span>
+                        </h3>
+                        <p class="monolith-body">
+                            Konsistensi menyelesaikan setiap detail pekerjaan—mulai dari kerapian pixel desain hingga ketepatan data administrasi—adalah bukti dedikasi profesional sejati.
+                        </p>
+                        <div class="monolith-commitments">
+                            <div class="commit-item">
+                                <span class="commit-dot animated-sparkle">✦</span>
+                                <span>Pekerja Keras, Disiplin & Tangguh</span>
+                            </div>
+                            <div class="commit-item">
+                                <span class="commit-dot animated-sparkle">✦</span>
+                                <span>Siap Belajar & Cepat Tanggap</span>
+                            </div>
+                            <div class="commit-item">
+                                <span class="commit-dot animated-sparkle">✦</span>
+                                <span>Hasil Kerja Rapi, Bersih & Terstruktur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pre-Contact Kinetic Marquee Banner -->
+        <div class="marquee-glass-rail liquid-glass reveal-up" style="margin-bottom: 50px;">
+            <div class="marquee-track">
+                <span>✦ TERSEDIA UNTUK PROJECT FREELANCE & ON-SITE</span>
+                <span>★ COMMERCIAL ADS & HIGH-RETENTION REELS</span>
+                <span>✦ CAPCUT PRO & ADOBE CREATIVE CLOUD</span>
+                <span>★ COLOR GRADING & VISUAL STORYTELLING</span>
+                <span>✦ DOMISILI JAKARTA TIMUR (WIB)</span>
+                <span>★ RESPON CEPAT & KUALITAS GRADE A</span>
+                <span>✦ TERSEDIA UNTUK PROJECT FREELANCE & ON-SITE</span>
+                <span>★ COMMERCIAL ADS & HIGH-RETENTION REELS</span>
+            </div>
+        </div>
+
+        <!-- ==============================================================
+             06 — KONTAK: LET'S WORK TOGETHER.
+             ============================================================== -->
+        <section id="kontak" class="section-aesthetic container">
+            <div class="contact-aesthetic-grid">
+                <!-- Col 1: Big Title & Direct Pitch -->
+                <div class="contact-headline-col reveal-up">
+                    <div class="eyebrow-pill liquid-glass-pill mono-text animated-border-glow">
+                        <span>06</span> // MARI BERKOLABORASI
+                    </div>
+                    <h2 class="aesthetic-display scroll-text-animate" data-scramble="LET'S WORK TOGETHER">
+                        LET'S WORK<br>
+                        <span class="gradient-text-liquid">TOGETHER.</span>
+                    </h2>
+                    <p class="contact-lead-text scroll-text-animate">
+                        Membutuhkan tenaga desainer grafis, editor video, admin kantor berketelitian tinggi, atau teknisi interface? Saya siap berkontribusi penuh untuk kemajuan tim atau proyek Anda.
+                    </p>
+                    <a href="https://wa.me/6287819925774" target="_blank" rel="noopener" class="btn-liquid-shine btn-lg pulse-hover-trigger">
+                        <span>CHAT WHATSAPP SEKARANG</span>
+                        <span class="arrow-sparkle">↗</span>
+                    </a>
+                </div>
+
+                <!-- Col 2: Verified Personal Channels -->
+                <div class="contact-channels-col reveal-up">
+                    <a href="mailto:65.rck.123@gmail.com" class="channel-glass-row liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <span class="channel-badge-glyph">✉</span>
+                        <div class="channel-text-group">
+                            <small class="mono-text">EMAIL RESMI</small>
+                            <strong id="contact-email">65.rck.123@gmail.com</strong>
+                        </div>
+                        <span class="channel-arrow-jump">↗</span>
+                    </a>
+
+                    <a href="tel:087819925774" class="channel-glass-row liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <span class="channel-badge-glyph">📞</span>
+                        <div class="channel-text-group">
+                            <small class="mono-text">TELEPON / WHATSAPP</small>
+                            <strong>0878-1992-5774</strong>
+                        </div>
+                        <span class="channel-arrow-jump">↗</span>
+                    </a>
+
+                    <div class="channel-glass-row liquid-glass tilt-element border-beam-active">
+                        <div class="border-beam"></div>
+                        <span class="channel-badge-glyph">📍</span>
+                        <div class="channel-text-group">
+                            <small class="mono-text">DOMISILI & ALAMAT KTP</small>
+                            <strong>Pisangan Timur, Pulogadung, Jakarta Timur</strong>
+                        </div>
+                        <span class="channel-arrow-jump">✓</span>
+                    </div>
+
+                    <button class="channel-glass-row liquid-glass tilt-element border-beam-active" id="open-message-modal-btn" style="text-align: left; cursor: pointer; border: none; font: inherit;">
+                        <div class="border-beam"></div>
+                        <span class="channel-badge-glyph">💌</span>
+                        <div class="channel-text-group">
+                            <small class="mono-text">FORM PESAN CEPAT</small>
+                            <strong>Kirim Pesan Langsung dari Website</strong>
+                        </div>
+                        <span class="channel-arrow-jump">↗</span>
+                    </button>
+                </div>
+
+                <!-- Col 3: Visual Card -->
+                <div class="contact-aesthetic-card-col reveal-up">
+                    <div class="feel-real-sculpture liquid-glass tilt-element card-glow-interactive border-beam-active">
+                        <div class="border-beam"></div>
+                        <div class="sculpture-radial-glow"></div>
+                        <span class="mono-text sculpture-tag">// STATUS: SIAP KERJA & KOLABORASI</span>
+                        <h3 class="sculpture-title">
+                            MAKE IT<br>
+                            <span class="gradient-text-liquid">FEEL REAL.</span>
+                        </h3>
+                        <p class="sculpture-sub">
+                            Tersedia untuk posisi Full-time, Part-time, On-site (Jakarta & sekitarnya), maupun Remote.
+                        </p>
+                        <div class="sculpture-footer">
+                            <span class="mono-text location-badge">📍 JAKARTA TIMUR (WIB)</span>
+                            <button class="orb-pulse-trigger" id="quick-hi-btn" title="Kirim Sapaan">✦</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Aesthetic Footer -->
+    <footer class="footer-aesthetic container">
+        <div class="footer-glass-capsule liquid-glass border-beam-active">
+            <div class="border-beam"></div>
+            <div class="footer-left">
+                <span class="footer-brand-title" id="footer-name">FARUQ.</span>
+                <span class="footer-copy">© 2026 Faruq — Interface Technician & Graphic Designer.</span>
+            </div>
+            <div class="footer-right mono-text">
+                <span class="system-status"><span class="badge-dot">●</span> JAKARTA TIMUR</span>
+                <span class="build-ver">087819925774 • 65.RCK.123@GMAIL.COM</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Apple VisionOS Floating Island Dock -->
+    <div class="vision-island-dock liquid-glass-pill" aria-label="Floating Controls">
+        <a href="#home" class="island-btn" title="Beranda">
+            <span class="island-icon">✦</span>
+            <span class="island-text">Top</span>
+        </a>
+        <a href="#video-showcase" class="island-btn" title="Video Reel">
+            <span class="island-icon">🎬</span>
+            <span class="island-text">Reel</span>
+        </a>
+        <a href="#karya" class="island-btn" title="Karya">
+            <span class="island-icon">🎨</span>
+            <span class="island-text">Karya</span>
+        </a>
+        <a href="#sertifikasi" class="island-btn" title="Sertifikasi">
+            <span class="island-icon">📜</span>
+            <span class="island-text">Sertifikasi</span>
+        </a>
+        <a href="#pengalaman" class="island-btn" title="Pengalaman">
+            <span class="island-icon">💼</span>
+            <span class="island-text">Karir</span>
+        </a>
+        <a href="#kontak" class="island-btn" title="Kontak">
+            <span class="island-icon">✉️</span>
+            <span class="island-text">Kontak</span>
+        </a>
+        <span class="island-seam"></span>
+        <button class="island-btn island-customizer-btn" id="open-customizer-btn" title="Sesuaikan Profil">
+            <span class="island-icon">⚙️</span>
+            <span class="island-text">Edit</span>
+        </button>
+    </div>
+
+    <!-- Modal: Interactive Google Drive Video Theater Player -->
+    <div class="modal-scrim" id="video-player-modal" hidden>
+        <div class="modal-liquid-container modal-video-container liquid-glass border-beam-active" role="dialog" aria-modal="true">
+            <div class="border-beam"></div>
+            <button class="scrim-close-btn" id="video-modal-close" aria-label="Tutup Video">✕</button>
+            <div class="video-player-frame-wrap">
+                <iframe id="video-player-iframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <div class="video-loading-indicator" id="video-loader">
+                    <div class="hud-orbit-ring hud-orbit-1"></div>
+                    <span class="mono-text">MEMUAT VIDEO GOOGLE DRIVE...</span>
+                </div>
+            </div>
+            <div class="video-modal-info">
+                <div class="modal-metadata-strip">
+                    <span class="liquid-glass-pill mono-text" id="video-modal-cat">VIDEO CATEGORY</span>
+                    <a href="" target="_blank" rel="noopener" class="drive-direct-btn mono-text" id="video-modal-drive-link">
+                        <span>▶ Tonton di Google Drive</span> ↗
+                    </a>
+                    <a href="" target="_blank" rel="noopener" class="drive-direct-btn mono-text" id="video-modal-subfolder-link" style="display: none;">
+                        <span>📂 Buka Subfolder Drive</span> ↗
+                    </a>
+                </div>
+                <h3 id="video-modal-title">Judul Video</h3>
+                <p id="video-modal-desc">Deskripsi video...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1: Work Detail Preview (Liquid Glass Modal) -->
+    <div class="modal-scrim" id="work-modal" hidden>
+        <div class="modal-liquid-container liquid-glass border-beam-active" role="dialog" aria-modal="true">
+            <div class="border-beam"></div>
+            <button class="scrim-close-btn" id="work-modal-close" aria-label="Tutup Pratinjau">✕</button>
+            <div class="modal-stage-media">
+                <img id="modal-work-img" src="" alt="Work Detail">
+                <span class="modal-timecode-badge mono-text" id="modal-work-duration">DETAIL</span>
+            </div>
+            <div class="modal-stage-info">
+                <div class="modal-metadata-strip">
+                    <span class="liquid-glass-pill mono-text" id="modal-work-cat">KATEGORI</span>
+                    <span class="mono-text year-accent" id="modal-work-year">2026</span>
+                </div>
+                <h3 id="modal-work-title">Nama Proyek</h3>
+                <p id="modal-work-desc">Deskripsi proyek...</p>
+                <div class="modal-pipeline-dock">
+                    <small class="mono-text">// SOFTWARE & ALAT YANG DIGUNAKAN:</small>
+                    <strong id="modal-work-tools">Adobe Photoshop, CorelDRAW, Premiere Pro</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Send Message Modal (Liquid Glass) -->
+    <div class="modal-scrim" id="message-modal" hidden>
+        <div class="modal-liquid-container liquid-glass border-beam-active" role="dialog" aria-modal="true">
+            <div class="border-beam"></div>
+            <button class="scrim-close-btn" id="message-modal-close" aria-label="Tutup Form">✕</button>
+            <span class="mono-text modal-eyebrow">// HUBUNGI FARUQ</span>
+            <h3 class="modal-title-display">MARI DISKUSIKAN <span class="gradient-text-liquid">PELUANG KERJA.</span></h3>
+            
+            <form id="contact-form" class="aesthetic-liquid-form">
+                <div class="input-glass-wrap">
+                    <label for="client-name" class="mono-text">NAMA ANDA / PERUSAHAAN</label>
+                    <input type="text" id="client-name" placeholder="Misal: HRD / Klien Studio" required>
+                </div>
+                <div class="input-glass-wrap">
+                    <label for="client-email" class="mono-text">EMAIL ATAU NOMOR WHATSAPP</label>
+                    <input type="text" id="client-email" placeholder="email@perusahaan.com atau 0812xxxx" required>
+                </div>
+                <div class="input-glass-wrap">
+                    <label for="client-project" class="mono-text">PESAN / KEBUTUHAN POSISI</label>
+                    <textarea id="client-project" rows="3" placeholder="Jelaskan kebutuhan pekerjaan desain grafis, editing video, admin, atau teknisi..." required></textarea>
+                </div>
+                <button type="submit" class="btn-liquid-shine btn-lg btn-fullwidth pulse-hover-trigger">
+                    <span>KIRIM PESAN LANGSUNG</span>
+                    <span class="arrow-sparkle">→</span>
+                </button>
+                <p class="form-feedback-pill" id="form-toast" hidden></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 3: Live Customizer -->
+    <div class="modal-scrim" id="customizer-modal" hidden>
+        <div class="modal-liquid-container liquid-glass border-beam-active" role="dialog" aria-modal="true">
+            <div class="border-beam"></div>
+            <button class="scrim-close-btn" id="customizer-close" aria-label="Tutup Kustomisasi">✕</button>
+            <span class="mono-text modal-eyebrow">// LIVE PROFILE CUSTOMIZER</span>
+            <h3 class="modal-title-display">SESUAIKAN <span class="gradient-text-liquid">DATA DIRI.</span></h3>
+            <p class="modal-sub-copy">Kamu dapat memperbarui teks dan foto sewaktu-waktu secara instan.</p>
+
+            <form id="customizer-form" class="aesthetic-liquid-form">
+                <div class="input-glass-wrap">
+                    <label for="cust-name" class="mono-text">NAMA LENGKAP</label>
+                    <input type="text" id="cust-name" value="FARUQ" required>
+                </div>
+                <div class="input-glass-wrap">
+                    <label for="cust-role" class="mono-text">PROFESI / BIDANG UTAMA</label>
+                    <input type="text" id="cust-role" value="INTERFACE TECHNICIAN & GRAPHIC DESIGNER" required>
+                </div>
+                <div class="input-glass-wrap">
+                    <label for="cust-photo" class="mono-text">PATH FOTO PROFILE</label>
+                    <input type="text" id="cust-photo" value="assets/faruq-portrait.jpg">
+                </div>
+                <div class="input-glass-wrap">
+                    <label for="cust-bio" class="mono-text">RINGKASAN SINGKAT</label>
+                    <textarea id="cust-bio" rows="2" required>Profesional muda yang dinamis dan serbabisa. Menggabungkan ketajaman desain visual, editing video promosi, administrasi digital terstruktur, hingga pemecahan masalah teknis antarmuka perangkat.</textarea>
+                </div>
+                <div class="input-glass-wrap">
+                    <label for="cust-email" class="mono-text">EMAIL</label>
+                    <input type="email" id="cust-email" value="65.rck.123@gmail.com" required>
+                </div>
+                <div class="form-btn-actions">
+                    <button type="submit" class="btn-liquid-shine btn-lg pulse-hover-trigger">Simpan Perubahan ✨</button>
+                    <button type="button" class="btn-glass-ghost" id="reset-customizer-btn">Reset Default</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
